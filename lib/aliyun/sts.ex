@@ -91,7 +91,7 @@ defmodule Aliyun.STS do
       |> Enum.join("&")
 
     signature =
-      :crypto.hmac(:sha, @access_key_secret <> "&", data)
+      :crypto.mac(:hmac, :sha, @access_key_secret <> "&", data)
       |> Base.encode64()
 
     params
